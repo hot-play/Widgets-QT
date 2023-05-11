@@ -3,14 +3,14 @@
 
 Win::Win(QWidget *parent):QWidget(parent)
 {
-    this->setWindowTitle("Счетчик");
-    label1 = new QLabel("Cчет по 1", this);
-    label2 = new QLabel("Cчет по 5", this);
-    edit1 = new Counter("0", this);
-    edit2 = new Counter("0", this);
-    calcbutton=new QPushButton("+1", this);
-    exitbutton=new QPushButton("Выход", this);
-
+    this->setWindowTitle("Счетчик"); // Проставим название окна
+    label1 = new QLabel("Cчет по 1", this); // Создадим ярлык для поля счетчика 1 клика
+    label2 = new QLabel("Cчет по 5", this); // Создадим ярлык для поля счетчика 5 кликов
+    edit1 = new Counter("0", this); // Создадим поле счетчика 1 клика
+    edit2 = new Counter("0", this); // Создадим поле счетчика 5 кликов
+    calcbutton=new QPushButton("+1", this); // Создадим кнопку +1 для счетчика
+    exitbutton=new QPushButton("Выход", this); // Создадим кнопку выхода
+    // Добавим элементы интерфейса в соответствующие поле окна
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->addWidget(label1);
     layout1->addWidget(label2);
@@ -24,7 +24,7 @@ Win::Win(QWidget *parent):QWidget(parent)
     layout4->addLayout(layout1);
     layout4->addLayout(layout2);
     layout4->addLayout(layout3);
-    // связь сигнала нажатия кнопки и слота закрытия окна
+    // Связь сигнала нажатия кнопки и слота закрытия окна
     connect(calcbutton, SIGNAL(clicked(bool)), edit1, SLOT(add_one()));
     connect(edit1, SIGNAL(tick_signal()), edit2, SLOT(add_one()));
     connect(exitbutton, SIGNAL(clicked(bool)), this, SLOT(close()));
